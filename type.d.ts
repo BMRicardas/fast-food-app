@@ -49,11 +49,11 @@ export interface CartStore {
   getTotalPrice: () => number;
 }
 
-interface TabBarIconProps {
-  focused: boolean;
-  icon: ImageSourcePropType;
-  title: string;
-}
+// interface TabBarIconProps {
+//   focused: boolean;
+//   icon: ImageSourcePropType;
+//   title: string;
+// }
 
 interface PaymentInfoStripeProps {
   label: string;
@@ -62,27 +62,27 @@ interface PaymentInfoStripeProps {
   valueStyle?: string;
 }
 
-interface CustomButtonProps {
-  onPress?: () => void;
-  title?: string;
-  style?: string;
-  leftIcon?: React.ReactNode;
-  textStyle?: string;
-  isLoading?: boolean;
-}
+// interface CustomButtonProps {
+//   onPress?: () => void;
+//   title?: string;
+//   style?: string;
+//   leftIcon?: React.ReactNode;
+//   textStyle?: string;
+//   isLoading?: boolean;
+// }
 
 interface CustomHeaderProps {
   title?: string;
 }
 
-interface CustomInputProps {
-  placeholder?: string;
-  value?: string;
-  onChangeText?: (text: string) => void;
-  label: string;
-  secureTextEntry?: boolean;
-  keyboardType?: "default" | "email-address" | "numeric" | "phone-pad";
-}
+// interface CustomInputProps {
+//   placeholder?: string;
+//   value?: string;
+//   onChangeText?: (text: string) => void;
+//   label: string;
+//   secureTextEntry?: boolean;
+//   keyboardType?: "default" | "email-address" | "numeric" | "phone-pad";
+// }
 
 interface ProfileFieldProps {
   label: string;
@@ -90,18 +90,18 @@ interface ProfileFieldProps {
   icon: ImageSourcePropType;
 }
 
-interface CreateUserParams {
-  email: string;
-  password: string;
-  name: string;
-}
+// interface CreateUserParams {
+//   email: string;
+//   password: string;
+//   name: string;
+// }
 
-interface SignInParams {
-  email: string;
-  password: string;
-}
+// interface SignInParams {
+//   email: string;
+//   password: string;
+// }
 
-interface GetMenuParams {
-  category: string;
-  query: string;
-}
+// interface GetMenuParams {
+//   category: string;
+//   query: string;
+// }

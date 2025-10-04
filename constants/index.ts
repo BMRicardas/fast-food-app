@@ -41,7 +41,8 @@ import salad from "@/assets/images/salad.png";
 import success from "@/assets/images/success.png";
 import tomatoes from "@/assets/images/tomatoes.png";
 
-export const IS_AUTHENTICATED = false;
+// export const IS_AUTHENTICATED = false;
+export const REQUEST_DELAY_MS = 1000;
 
 export const CATEGORIES = [
   {
