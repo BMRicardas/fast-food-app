@@ -5,15 +5,21 @@ import {
   Databases,
   ID,
   Query,
+  Storage,
 } from "react-native-appwrite";
-import { CreateUserParams, SignInParams } from "./types";
+import { CreateUserParams, GetMenuParams, SignInParams } from "./types";
 
 export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT ?? "",
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID ?? "",
   platform: "io.ricardas.food-app",
   databaseId: "68e115450012a8c8f721",
+  assetsBucketId: "68e19cb2000f474908c2",
   userCollectionId: "68e1394c002d6c61ff38",
+  categoriesCollectionId: "68e19709000f33ca963b",
+  menuCollectionId: "68e197990035b7b0037e",
+  customizationsCollectionId: "68e199f70013431bf060",
+  menuCustomizationsCollectionId: "68e19aee000b9d9ebab1",
 };
 
 export const client = new Client()
@@ -23,7 +29,8 @@ export const client = new Client()
 
 export const account = new Account(client);
 export const databases = new Databases(client);
-export const avatars = new Avatars(client);
+export const storage = new Storage(client);
+const avatars = new Avatars(client);
 
 export async function createUser({ email, password, name }: CreateUserParams) {
   try {
@@ -98,16 +105,40 @@ export async function getCurrentUser() {
   }
 }
 
-// export async function signUp({ email, password, name }: CreateUserParams) {
-//   try {
-//     return await account.create({
-//       userId: ID.unique(),
-//       email,
-//       password,
-//       name,
-//     });
-//   } catch (error) {
-//     console.error("Error signing up:", error);
-//     throw new Error("Failed to sign up");
-//   }
-// }
+export async function getMenu({ category, query }: GetMenuParams) {
+  try {
+    const queries = [];
+
+    if (category) {
+      queries.push(Query.equal("categoryId", category));
+    }
+
+    if (query) {
+      queries.push(Query.search("name", query));
+    }
+
+    const menus = await databases.listDocuments({
+      databaseId: appwriteConfig.databaseId,
+      collectionId: appwriteConfig.menuCollectionId,
+      queries,
+    });
+
+    return menus.documents;
+  } catch (error) {
+    console.error("Error getting menu:", error);
+    throw error;
+  }
+}
+
+export async function getCategories() {
+  try {
+    const categories = await databases.listDocuments({
+      databaseId: appwriteConfig.databaseId,
+      collectionId: appwriteConfig.categoriesCollectionId,
+    });
+    return categories.documents;
+  } catch (error) {
+    console.error("Error getting categories:", error);
+    throw error;
+  }
+}

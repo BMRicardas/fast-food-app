@@ -1,4 +1,5 @@
 import { CartButton } from "@/components/cart-button";
+import { SeedDbButton } from "@/components/seed-db-button";
 import { images, offers } from "@/constants";
 import { useAuthStore } from "@/store/auth.store";
 import clsx from "clsx";
@@ -18,6 +19,7 @@ export default function Index() {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
+      <SeedDbButton />
       <FlatList
         data={offers}
         renderItem={({ item, index }) => {
