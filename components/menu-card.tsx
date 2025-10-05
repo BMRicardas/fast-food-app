@@ -1,4 +1,3 @@
-import { appwriteConfig } from "@/lib/appwrite";
 import { MenuItem } from "@/lib/appwrite/types";
 import { Image, Platform, Text, TouchableOpacity } from "react-native";
 
@@ -7,8 +6,6 @@ type Props = {
 };
 
 export function MenuCard({ item: { image_url, name, price } }: Props) {
-  const imageUrl = `${image_url}?project=${appwriteConfig.projectId}`;
-
   return (
     <TouchableOpacity
       className="menu-card"
@@ -18,7 +15,7 @@ export function MenuCard({ item: { image_url, name, price } }: Props) {
           : {}
       }>
       <Image
-        source={{ uri: imageUrl }}
+        source={{ uri: image_url }}
         className="size-32 absolute -top-10"
         resizeMode="contain"
       />
