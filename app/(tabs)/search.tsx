@@ -3,7 +3,7 @@ import { Filter } from "@/components/filter";
 import { MenuCard } from "@/components/menu-card";
 import { SearchBar } from "@/components/search-bar";
 import { getCategories, getMenu } from "@/lib/appwrite";
-import useAppwrite from "@/lib/appwrite/use-appwrite";
+import { useAppwrite } from "@/lib/appwrite/use-appwrite";
 import clsx from "clsx";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect } from "react";

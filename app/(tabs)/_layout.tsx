@@ -8,7 +8,7 @@ import { Image, Text, View } from "react-native";
 
 function TabBarIcon({ focused, icon, title }: TabBarIconProps) {
   useEffect(() => {
-    router.navigate("/search");
+    router.navigate("/cart");
   }, []);
 
   return (

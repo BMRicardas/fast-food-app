@@ -1,11 +1,14 @@
 import { MenuItem } from "@/lib/appwrite/types";
+import { useCartStore } from "@/store/cart.store";
 import { Image, Platform, Text, TouchableOpacity } from "react-native";
 
 type Props = {
   item: MenuItem;
 };
 
-export function MenuCard({ item: { image_url, name, price } }: Props) {
+export function MenuCard({ item: { $id, image_url, name, price } }: Props) {
+  const { addItem } = useCartStore();
+
   return (
     <TouchableOpacity
       className="menu-card"
@@ -24,8 +27,11 @@ export function MenuCard({ item: { image_url, name, price } }: Props) {
         numberOfLines={1}>
         {name}
       </Text>
-      <Text className="body-regular text-gray-400 mb-4">From ${price}</Text>
-      <TouchableOpacity onPress={() => {}}>
+      <Text className="body-regular text-gray-500 mb-4">From ${price}</Text>
+      <TouchableOpacity
+        onPress={() =>
+          addItem({ id: $id, name, price, image_url, customizations: [] })
+        }>
         <Text className="paragraph-bold text-primary">Add to Cart +</Text>
       </TouchableOpacity>
     </TouchableOpacity>
