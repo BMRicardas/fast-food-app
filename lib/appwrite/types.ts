@@ -1,3 +1,5 @@
+import { Models } from "react-native-appwrite";
+
 export type CreateUserParams = {
   email: string;
   password: string;
@@ -14,7 +16,7 @@ export type GetMenuParams = {
   query: string;
 };
 
-export type Category = {
+export type Category = Models.Document & {
   name: string;
   description: string;
 };
@@ -25,7 +27,7 @@ export type Customization = {
   type: "topping" | "side";
 };
 
-export type MenuItem = {
+export type MenuItem = Models.Document & {
   name: string;
   description: string;
   image_url: string;

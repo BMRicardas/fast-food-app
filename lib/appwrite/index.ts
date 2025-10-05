@@ -110,7 +110,7 @@ export async function getMenu({ category, query }: GetMenuParams) {
     const queries = [];
 
     if (category) {
-      queries.push(Query.equal("categoryId", category));
+      queries.push(Query.equal("categories", category));
     }
 
     if (query) {
@@ -136,6 +136,7 @@ export async function getCategories() {
       databaseId: appwriteConfig.databaseId,
       collectionId: appwriteConfig.categoriesCollectionId,
     });
+
     return categories.documents;
   } catch (error) {
     console.error("Error getting categories:", error);

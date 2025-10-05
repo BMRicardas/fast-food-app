@@ -1,6 +1,7 @@
 import { ImageSourcePropType } from "react-native";
+import { Models } from "react-native-appwrite";
 
-export type User = {
+export type User = Models.Document & {
   name: string;
   email: string;
   avatar: string;

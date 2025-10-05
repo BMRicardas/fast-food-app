@@ -1,5 +1,7 @@
 import { CartButton } from "@/components/cart-button";
+import { Filter } from "@/components/filter";
 import { MenuCard } from "@/components/menu-card";
+import { SearchBar } from "@/components/search-bar";
 import { getCategories, getMenu } from "@/lib/appwrite";
 import useAppwrite from "@/lib/appwrite/use-appwrite";
 import clsx from "clsx";
@@ -28,7 +30,7 @@ export default function Search() {
 
   useEffect(() => {
     refetch({ category, query, limit: 6 });
-  }, []);
+  }, [category, query]);
 
   return (
     <SafeAreaView className="bg-white h-full">
@@ -43,6 +45,7 @@ export default function Search() {
                 "flex-1 max-w-[48%}",
                 isFirstRightColItem ? "mt-10" : "mt-0"
               )}>
+              {/* @ts-expect-error */}
               <MenuCard item={item} />
             </View>
           );
@@ -67,14 +70,15 @@ export default function Search() {
                 </View>
                 <CartButton />
               </View>
-              <Text>Search Input</Text>
-              <Text>Filter</Text>
+              <SearchBar />
+              {/* @ts-expect-error */}
+              <Filter categories={categories} />
             </View>
           );
         }}
         ListEmptyComponent={() => {
           return (
-            loading && (
+            !loading && (
               <Text className="text-center text-dark-100">No items found</Text>
             )
           );

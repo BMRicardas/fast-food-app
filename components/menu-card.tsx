@@ -24,19 +24,10 @@ export function MenuCard({ item: { image_url, name, price } }: Props) {
         numberOfLines={1}>
         {name}
       </Text>
-      <Text className="body-regular text-gray-200 mb-4">From ${price}</Text>
-      {/* <TouchableOpacity
-        onPress={() =>
-          addItem({
-            id: $id,
-            name,
-            price,
-            image_url: imageUrl,
-            customizations: [],
-          })
-        }>
+      <Text className="body-regular text-gray-400 mb-4">From ${price}</Text>
+      <TouchableOpacity onPress={() => {}}>
         <Text className="paragraph-bold text-primary">Add to Cart +</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 }
