@@ -56,14 +56,6 @@ export default function SignUp() {
     try {
       await sleep();
 
-      // Call Appwrite sign-up function here
-      console.log("Signing up with data:", {
-        name,
-        email,
-        password,
-        // confirmPassword,
-      });
-
       await createUser({ name, email, password });
 
       router.replace("/");

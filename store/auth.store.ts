@@ -29,8 +29,6 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const user = await getCurrentUser();
 
-      console.log({ user });
-
       if (user) {
         set({ user: user as unknown as User, isAuthenticated: true });
       } else {
