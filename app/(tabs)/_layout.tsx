@@ -2,10 +2,15 @@ import { images } from "@/constants";
 import { useAuthStore } from "@/store/auth.store";
 import { TabBarIconProps } from "@/types";
 import clsx from "clsx";
-import { Redirect, Tabs } from "expo-router";
+import { Redirect, router, Tabs } from "expo-router";
+import { useEffect } from "react";
 import { Image, Text, View } from "react-native";
 
 function TabBarIcon({ focused, icon, title }: TabBarIconProps) {
+  useEffect(() => {
+    router.navigate("/search");
+  }, []);
+
   return (
     <View className="tab-icon">
       <Image
